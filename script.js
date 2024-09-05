@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         
         const nombre = document.getElementById('nombre').value;
-        const email = document.getElementById('email').value;
+        const email = document.getElentById('email').value;
         const mensaje = document.getElementById('mensaje').value;
 
         // Aquí normalmente enviarías los datos a un servidor
