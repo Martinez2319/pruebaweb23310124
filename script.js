@@ -185,4 +185,10 @@ function compartirEnFacebook(nombreAuto) {
     window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}&quote=Mira este increíble ${nombreAuto}`, '_blank');
 }
 
-function compartir
+function compartirEnFacebook(nombreAuto) {
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}&quote=Mira este increíble ${nombreAuto}`, '_blank');
+}
+
+function compartirEnTwitter(nombreAuto) {
+    window.open(`https://twitter.com/intent/tweet?text=Mira este increíble ${nombreAuto}&url=${encodeURIComponent(window.location.href)}`, '_blank');
+}
