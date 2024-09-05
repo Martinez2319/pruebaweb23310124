@@ -1,1 +1,68 @@
-  
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mundo de los Autos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Mundo de los Autos</h1>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#galeria">Galería</a></li>
+                <li><a href="#datos">Datos Curiosos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="inicio">
+            <h2>Bienvenido al fascinante mundo de los autos</h2>
+            <p>Descubre la belleza, la ingeniería y la historia detrás de los vehículos más impresionantes.</p>
+        </section>
+
+        <section id="galeria">
+            <h2>Galería de Autos</h2>
+            <div class="grid-galeria" id="galeriaAutos">
+                <!-- Las imágenes se cargarán dinámicamente aquí -->
+            </div>
+            <button id="cargarMasAutos">Cargar más autos</button>
+        </section>
+
+        <section id="datos">
+            <h2>Datos Curiosos sobre Autos</h2>
+            <div id="datoCurioso">
+                <p>Haz clic en el botón para ver un dato curioso sobre autos.</p>
+            </div>
+            <button id="nuevoDato">Nuevo dato curioso</button>
+        </section>
+
+        <section id="contacto">
+            <h2>Contacto</h2>
+            <p>¿Tienes alguna pregunta o sugerencia sobre autos? ¡Contáctanos!</p>
+            <form id="formularioContacto">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+                
+                <label for="mensaje">Mensaje:</label>
+                <textarea id="mensaje" required></textarea>
+                
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Mundo de los Autos. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
