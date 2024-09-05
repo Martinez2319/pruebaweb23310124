@@ -34,13 +34,19 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     function cargarAutos(cantidad, filtro = '') {
+        galeriaAutos.innerHTML = '';
+        indiceAutoActual = 0;
+        autosVisibles = [];
+
         const autosAMostrar = autosInfo.filter(auto => 
-            auto.nombre.toLowerCase().includes(filtro.toLowerCase()) ||
-            auto.marca.toLowerCase().includes(filtro.toLowerCase()) ||
-            auto.tipo.toLowerCase().includes(filtro.toLowerCase())
+            (auto.nombre.toLowerCase().includes(filtro.toLowerCase()) ||
+             auto.marca.toLowerCase().includes(filtro.toLowerCase()) ||
+             auto.tipo.toLowerCase().includes(filtro.toLowerCase())) &&
+            (filtroMarca.value === '' || auto.marca === filtroMarca.value) &&
+            (filtroTipo.value === '' || auto.tipo === filtroTipo.value)
         );
 
-        for (let i = indiceAutoActual; i < indiceAutoActual + cantidad && i < autosAMostrar.length; i++) {
+        for (let i = 0; i < cantidad && i < autosAMostrar.length; i++) {
             const auto = autosAMostrar[i];
             const carroItem = document.createElement('div');
             carroItem.className = 'carro-item';
@@ -51,12 +57,10 @@ document.addEventListener('DOMContentLoaded', () => {
             carroItem.addEventListener('click', () => mostrarDetallesAuto(auto));
             galeriaAutos.appendChild(carroItem);
             autosVisibles.push(auto);
+            indiceAutoActual++;
         }
-        indiceAutoActual += cantidad;
 
-        if (indiceAutoActual >= autosAMostrar.length) {
-            cargarMasBtn.style.display = 'none';
-        }
+        cargarMasBtn.style.display = indiceAutoActual < autosAMostrar.length ? 'block' : 'none';
     }
 
     function mostrarDetallesAuto(auto) {
@@ -82,6 +86,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const marcas = [...new Set(autosInfo.map(auto => auto.marca))];
         const tipos = [...new Set(autosInfo.map(auto => auto.tipo))];
 
+        filtroMarca.innerHTML = '<option value="">Todas las marcas</option>';
+        filtroTipo.innerHTML = '<option value="">Todos los tipos</option>';
+
         marcas.forEach(marca => {
             const option = document.createElement('option');
             option.value = marca;
@@ -99,23 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function aplicarFiltros() {
         const busqueda = busquedaInput.value;
-        const marcaSeleccionada = filtroMarca.value;
-        const tipoSeleccionado = filtroTipo.value;
-
-        galeriaAutos.innerHTML = '';
-        indiceAutoActual = 0;
-        autosVisibles = [];
-
-        const autosFiltrados = autosInfo.filter(auto => 
-            (auto.nombre.toLowerCase().includes(busqueda.toLowerCase()) ||
-             auto.marca.toLowerCase().includes(busqueda.toLowerCase()) ||
-             auto.tipo.toLowerCase().includes(busqueda.toLowerCase())) &&
-            (marcaSeleccionada === '' || auto.marca === marcaSeleccionada) &&
-            (tipoSeleccionado === '' || auto.tipo === tipoSeleccionado)
-        );
-
-        cargarAutos(6, '');
-        cargarMasBtn.style.display = autosFiltrados.length > 6 ? 'block' : 'none';
+        cargarAutos(6, busqueda);
     }
 
     function toggleModoVista() {
@@ -160,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    cargarMasBtn.addEventListener('click', () => cargarAutos(3));
+    cargarMasBtn.addEventListener('click', () => cargarAutos(3, busquedaInput.value));
     busquedaInput.addEventListener('input', aplicarFiltros);
     filtroMarca.addEventListener('change', aplicarFiltros);
     filtroTipo.addEventListener('change', aplicarFiltros);
@@ -189,3 +180,9 @@ document.addEventListener('DOMContentLoaded', () => {
     cargarAutos(6);
     mostrarAutoDelDia();
 });
+
+function compartirEnFacebook(nombreAuto) {
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}&quote=Mira este increíble ${nombreAuto}`, '_blank');
+}
+
+function compartir
