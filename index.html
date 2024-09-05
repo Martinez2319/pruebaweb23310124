@@ -3,65 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mundo de los Autos</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Galería de Autos Avanzada</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
     <header>
-        <h1>Mundo de los Autos</h1>
+        <h1>Galería de Autos Avanzada</h1>
         <nav>
             <ul>
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#galeria">Galería</a></li>
-                <li><a href="#datos">Datos Curiosos</a></li>
+                <li><a href="#comparador">Comparador</a></li>
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
         </nav>
+        <div id="modo-oscuro-toggle">
+            <i class="fas fa-moon"></i>
+            <span>Modo Oscuro</span>
+        </div>
     </header>
 
     <main>
-        <section id="inicio">
-            <h2>Bienvenido al fascinante mundo de los autos</h2>
-            <p>Descubre la belleza, la ingeniería y la historia detrás de los vehículos más impresionantes.</p>
+        <section id="auto-del-dia">
+            <h2>Auto del Día</h2>
+            <div id="auto-destacado"></div>
         </section>
 
         <section id="galeria">
             <h2>Galería de Autos</h2>
-            <div class="grid-galeria" id="galeriaAutos">
-                <!-- Las imágenes y nombres se cargarán dinámicamente aquí -->
+            <div class="controles">
+                <input type="text" id="busqueda" placeholder="Buscar autos...">
+                <select id="filtro-marca">
+                    <option value="">Todas las marcas</option>
+                </select>
+                <select id="filtro-tipo">
+                    <option value="">Todos los tipos</option>
+                </select>
+                <button id="modo-vista">Cambiar Vista</button>
             </div>
-            <button id="cargarMasAutos">Cargar más autos</button>
+            <div id="galeria-autos" class="grid-view"></div>
+            <button id="cargar-mas">Cargar más autos</button>
         </section>
 
-        <section id="datos">
-            <h2>Datos Curiosos sobre Autos</h2>
-            <div id="datoCurioso">
-                <p>Haz clic en el botón para ver un dato curioso sobre autos.</p>
-            </div>
-            <button id="nuevoDato">Nuevo dato curioso</button>
+        <section id="comparador">
+            <h2>Comparador de Autos</h2>
+            <div id="autos-comparacion"></div>
+            <button id="comparar">Comparar Seleccionados</button>
         </section>
 
         <section id="contacto">
             <h2>Contacto</h2>
-            <p>¿Tienes alguna pregunta o sugerencia sobre autos? ¡Contáctanos!</p>
-            <form id="formularioContacto">
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" required>
-                
-                <label for="email">Email:</label>
-                <input type="email" id="email" required>
-                
-                <label for="mensaje">Mensaje:</label>
-                <textarea id="mensaje" required></textarea>
-                
+            <form id="formulario-contacto">
+                <input type="text" id="nombre" placeholder="Nombre" required>
+                <input type="email" id="email" placeholder="Email" required>
+                <textarea id="mensaje" placeholder="Mensaje" required></textarea>
                 <button type="submit">Enviar</button>
             </form>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2024 Mundo de los Autos. Todos los derechos reservados.</p>
+        <p>&copy; 2024 Galería de Autos Avanzada. Todos los derechos reservados.</p>
     </footer>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="cerrar">&times;</span>
+            <div id="modal-contenido"></div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
