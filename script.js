@@ -16,29 +16,33 @@ document.addEventListener('DOMContentLoaded', () => {
         "La marca de autos Porsche también diseña cepillos de dientes."
     ];
 
-    const imagenesAutos = [
-        "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-        "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-        "https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-        "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1283&q=80",
-        "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-        "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-4.0.3&auto=format&fit=crop&w=1287&q=80",
-        "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-        "https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-        "https://images.unsplash.com/photo-1617814076668-946f58342656?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-        "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-        "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-        "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80"
+    const autosInfo = [
+        { nombre: "Audi R8", url: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" },
+        { nombre: "Ford Mustang", url: "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" },
+        { nombre: "Porsche 911", url: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" },
+        { nombre: "Chevrolet Camaro", url: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1283&q=80" },
+        { nombre: "Lamborghini Aventador", url: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" },
+        { nombre: "Ferrari 488", url: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-4.0.3&auto=format&fit=crop&w=1287&q=80" },
+        { nombre: "McLaren 720S", url: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" },
+        { nombre: "Bugatti Chiron", url: "https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" },
+        { nombre: "Tesla Model S", url: "https://images.unsplash.com/photo-1617814076668-946f58342656?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" },
+        { nombre: "BMW M4", url: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" },
+        { nombre: "Mercedes-AMG GT", url: "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" },
+        { nombre: "Aston Martin Vantage", url: "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" }
     ];
 
-    let indiceImagenActual = 0;
+    let indiceAutoActual = 0;
 
     // Función para cargar imágenes de autos
     function cargarImagenesAutos(cantidad) {
-        for (let i = 0; i < cantidad && indiceImagenActual < imagenesAutos.length; i++) {
+        for (let i = 0; i < cantidad && indiceAutoActual < autosInfo.length; i++) {
+            const autoInfo = autosInfo[indiceAutoActual];
+            const carroItem = document.createElement('div');
+            carroItem.className = 'carro-item';
+            
             const img = document.createElement('img');
-            img.src = imagenesAutos[indiceImagenActual];
-            img.alt = `Auto ${indiceImagenActual + 1}`;
+            img.src = autoInfo.url;
+            img.alt = autoInfo.nombre;
             img.loading = "lazy"; // Para cargar las imágenes de forma perezosa
             
             // Manejar errores de carga de imagen
@@ -47,11 +51,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 this.alt = 'Imagen no disponible';
             };
             
-            galeriaAutos.appendChild(img);
-            indiceImagenActual++;
+            const nombre = document.createElement('p');
+            nombre.className = 'carro-nombre';
+            nombre.textContent = autoInfo.nombre;
+            
+            carroItem.appendChild(img);
+            carroItem.appendChild(nombre);
+            galeriaAutos.appendChild(carroItem);
+            
+            indiceAutoActual++;
         }
         
-        if (indiceImagenActual >= imagenesAutos.length) {
+        if (indiceAutoActual >= autosInfo.length) {
             cargarMasAutosBtn.style.display = 'none'; // Oculta el botón si no hay más imágenes
         }
     }
