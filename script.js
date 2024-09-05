@@ -1,4 +1,3 @@
- 
 document.addEventListener('DOMContentLoaded', () => {
     const cargarMasAutosBtn = document.getElementById('cargarMasAutos');
     const nuevoDatoBtn = document.getElementById('nuevoDato');
@@ -14,13 +13,33 @@ document.addEventListener('DOMContentLoaded', () => {
         "El primer auto eléctrico se creó en la década de 1830, mucho antes que los de gasolina."
     ];
 
+    const imagenesAutos = [
+        "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+        "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+        "https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+        "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1283&q=80",
+        "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+        "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
+        "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+        "https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+        "https://images.unsplash.com/photo-1570733117311-d990c3816c47?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+    ];
+
+    let indiceImagenActual = 0;
+
     // Función para cargar imágenes de autos
     function cargarImagenesAutos(cantidad) {
-        for (let i = 0; i < cantidad; i++) {
+        for (let i = 0; i < cantidad && indiceImagenActual < imagenesAutos.length; i++) {
             const img = document.createElement('img');
-            img.src = `/api/placeholder/200/150?text=Auto${galeriaAutos.children.length + 1}`;
-            img.alt = `Auto ${galeriaAutos.children.length + 1}`;
+            img.src = imagenesAutos[indiceImagenActual];
+            img.alt = `Auto ${indiceImagenActual + 1}`;
+            img.loading = "lazy"; // Para cargar las imágenes de forma perezosa
             galeriaAutos.appendChild(img);
+            indiceImagenActual++;
+        }
+        
+        if (indiceImagenActual >= imagenesAutos.length) {
+            cargarMasAutosBtn.style.display = 'none'; // Oculta el botón si no hay más imágenes
         }
     }
 
