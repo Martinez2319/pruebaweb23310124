@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { nombre: "Ferrari 488", url: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-4.0.3&auto=format&fit=crop&w=1287&q=80" },
         { nombre: "McLaren 720S", url: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" },
         { nombre: "Bugatti Chiron", url: "https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" },
-        { nombre: "Tesla Model S", url: "https://images.unsplash.com/photo-1617814076668-946f58342656?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" },
+        { nombre: "Tesla Model S", url: "https://images.unsplash.com/photo-1560958089-b8a1929cea89?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" },
         { nombre: "BMW M4", url: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" },
         { nombre: "Mercedes-AMG GT", url: "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" },
         { nombre: "Aston Martin Vantage", url: "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" }
